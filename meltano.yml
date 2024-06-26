@@ -31,6 +31,8 @@ plugins:
       kind: date_iso8601
     - name: events:query
       kind: string
+    select:
+    - '*.*'
   loaders:
   - name: target-jsonl
     variant: andyh1203
