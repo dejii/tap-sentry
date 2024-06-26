@@ -129,3 +129,8 @@ meltano elt tap-sentry target-jsonl
 
 See the [dev guide](https://sdk.meltano.com/en/latest/dev_guide.html) for more instructions on how to use the SDK to
 develop your own taps and targets.
+
+### Extras
+```
+Loader '{loader}' is not known to Meltano. Try running `meltano lock --update --all` to ensure your plugins are up to date.
+```

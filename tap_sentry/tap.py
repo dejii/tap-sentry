@@ -5,7 +5,6 @@ from __future__ import annotations
 from singer_sdk import Tap
 from singer_sdk import typing as th  # JSON schema typing helpers
 
-# TODO: Import your custom stream types here:
 from tap_sentry import streams
 
 
@@ -14,43 +13,42 @@ class Tapsentry(Tap):
 
     name = "tap-sentry"
 
-    # TODO: Update this section with the actual config values you expect:
     config_jsonschema = th.PropertiesList(
         th.Property(
             "auth_token",
             th.StringType,
             required=True,
-            secret=True,  # Flag config as protected.
-            description="The token to authenticate against the API service",
+            secret=True,
+            description="The token to authenticate against the API service. https://docs.sentry.io/api/auth/",
         ),
         th.Property(
-            "project_ids",
-            th.ArrayType(th.StringType),
+            "organization_id_or_slug",
+            th.StringType,
             required=True,
-            description="Project IDs to replicate",
+            description="The ID or slug of the organization the resource belongs to.",
         ),
         th.Property(
-            "start_date",
+            "query",
             th.DateTimeType,
-            description="The earliest record date to sync",
+            description="""An optional Sentry structured search query.
+              If not provided an implied "is:unresolved" is assumed.""",
         ),
         th.Property(
             "api_url",
             th.StringType,
-            default="https://api.mysample.com",
-            description="The url for the API service",
+            default="https://sentry.io",
+            description="The url for the Sentry API service",
         ),
     ).to_dict()
 
-    def discover_streams(self) -> list[streams.sentryStream]:
+    def discover_streams(self) -> list[streams.SentryStream]:
         """Return a list of discovered streams.
 
         Returns:
             A list of discovered streams.
         """
         return [
-            streams.GroupsStream(self),
-            streams.UsersStream(self),
+            streams.EventsStream(self),
         ]
 
 

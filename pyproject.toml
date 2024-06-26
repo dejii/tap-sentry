@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "supabase-tap-sentry"
+name = "tap-sentry"
 version = "0.0.1"
 description = "`tap-sentry` is a Singer tap for sentry, built with the Meltano Singer SDK."
 readme = "README.md"

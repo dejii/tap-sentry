@@ -8,7 +8,7 @@ from tap_sentry.tap import Tapsentry
 
 SAMPLE_CONFIG = {
     "start_date": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
-    # TODO: Initialize minimal tap config
+    # TODO(dejii): Initialize minimal tap config # noqa: FIX002, TD003
 }
 
 
@@ -19,4 +19,4 @@ TestTapsentry = get_tap_test_class(
 )
 
 
-# TODO: Create additional tests as appropriate for your tap.
+# TODO(dejii): Create additional tests as appropriate. # noqa: FIX002, TD003
