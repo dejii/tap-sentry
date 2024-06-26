@@ -17,14 +17,12 @@ class Tapsentry(Tap):
         th.Property(
             "auth_token",
             th.StringType,
-            required=True,
             secret=True,
             description="The token to authenticate against the API service. https://docs.sentry.io/api/auth/",
         ),
         th.Property(
             "organization_id_or_slug",
             th.StringType,
-            required=True,
             description="The ID or slug of the organization the resource belongs to.",
         ),
         th.Property(
