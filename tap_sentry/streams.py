@@ -120,11 +120,11 @@ class EventsStream(SentryStream):
             if "events:query" in self.config:
                 params["query"] = self.config.get("events:query")
             params["start"] = (
-                self.config.get("events:start_date")
+                self.config.get("events:start_date_time")
                 or (current_hour - timedelta(hours=1)).isoformat()
             )
             params["end"] = (
-                self.config.get("events:end_date") or current_hour.isoformat()
+                self.config.get("events:end_date_time") or current_hour.isoformat()
             )
             params["sort"] = "-timestamp"
         return params
