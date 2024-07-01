@@ -78,7 +78,7 @@ class EventsStream(SentryStream):
     name = "events"
     path = "/api/0/organizations/{organization_id_or_slug}/events/"
     primary_keys: t.ClassVar[list[str]] = ["id"]
-    replication_key = None
+    replication_key = "timestamp"
     records_jsonpath = "$.data[*]"
 
     schema = th.PropertiesList(
