@@ -112,6 +112,9 @@ class EventsStream(SentryStream):
         if not next_page_token:
             # https://docs.sentry.io/concepts/search/searchable-properties/events/
             selected_fields = self.config.get("events:fields") or []
+            environments = self.config.get("events:environments") or []
+            if len(environments) > 0:
+                params["environment"] = environments
             params["field"] = selected_fields
             if "id" not in selected_fields:
                 params["field"].append("id")

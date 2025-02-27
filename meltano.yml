@@ -23,6 +23,8 @@ plugins:
     - name: auth_token
       kind: string
       sensitive: true
+    - name: events:environments
+      kind: array
     - name: events:fields
       kind: array
     - name: events:start_date_time
